@@ -74,6 +74,27 @@ export default function UtilityBillsUpload() {
     const file = event.target.files?.[0];
     if (!file) return;
 
+    // Validate file size (50MB limit)
+    if (file.size > 50 * 1024 * 1024) {
+      toast({
+        title: "File Too Large",
+        description: "Please select a file smaller than 50MB.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate file type
+    const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'image/gif'];
+    if (!allowedTypes.includes(file.type)) {
+      toast({
+        title: "Invalid File Type",
+        description: "Please upload a PDF or image file (JPEG, PNG, GIF).",
+        variant: "destructive",
+      });
+      return;
+    }
+
     // Mock data extraction - in real app this would be actual extraction
     const mockAmount = Math.floor(Math.random() * 3000) + 500;
     const mockDueDate = new Date();
@@ -87,6 +108,9 @@ export default function UtilityBillsUpload() {
       amount: mockAmount.toString(),
       dueDate: mockDueDate.toISOString(),
     });
+
+    // Reset the input
+    event.target.value = '';
   };
 
   const getStatusBadge = (status: string) => {

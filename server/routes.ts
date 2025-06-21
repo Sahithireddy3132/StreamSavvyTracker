@@ -14,17 +14,21 @@ const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 const upload = multer({
   dest: 'uploads/',
   limits: {
-    fileSize: 5 * 1024 * 1024, // 5MB limit
+    fileSize: 50 * 1024 * 1024, // 50MB limit
   },
   fileFilter: (req, file, cb) => {
-    const allowedTypes = /jpeg|jpg|png|pdf/;
-    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
-    const mimetype = allowedTypes.test(file.mimetype);
+    const allowedMimeTypes = [
+      'application/pdf',
+      'image/jpeg',
+      'image/jpg', 
+      'image/png',
+      'image/gif'
+    ];
     
-    if (mimetype && extname) {
+    if (allowedMimeTypes.includes(file.mimetype)) {
       return cb(null, true);
     } else {
-      cb(new Error('Only PDF and image files are allowed'));
+      cb(new Error(`File type ${file.mimetype} not supported. Please upload PDF or image files only.`));
     }
   }
 });
