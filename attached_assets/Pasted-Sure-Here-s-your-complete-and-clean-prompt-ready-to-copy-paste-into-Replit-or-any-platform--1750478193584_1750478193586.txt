@@ -1,0 +1,174 @@
+Sure! Here's your **complete and clean prompt**—ready to copy-paste into **Replit** or any platform that accepts full-stack project instructions. This covers **branding, UI, logic, and all features using the MERN stack** (MongoDB, Express, React, Node.js) under the new name **Loanlytic**:
+
+---
+
+### 🚀 Prompt: Build “Loanlytic” – A Professional MERN Stack Loan Management Application
+
+I want to build a complete, fully functional **loan management platform** named **Loanlytic** using the **MERN stack** (MongoDB, Express.js, React.js, Node.js). The application should be **visually attractive**, **professionally styled**, and **feature-rich**, with no placeholders or minimalism. The design must reflect depth, contrast, and a strong visual presence with gradients, structured layout, and card-based components.
+
+---
+
+### 🔧 Tech Stack:
+
+* **MongoDB** for data storage
+* **Express.js** for backend API routing
+* **React.js** for frontend UI
+* **Node.js** for backend logic
+
+> ⚠ No filenames should contain “replit.” Use local files or mock data where needed.
+
+---
+
+### 🔄 Global UI & Branding Instructions:
+
+* Replace all instances of the old name “BixCredit” with **Loanlytic**
+* Use **a dynamic, blended background** (not plain), attractive **color contrast**, and **professional layout** across all pages
+* Do **not** use overly minimal, basic designs — UI should look like a **business-grade product**
+
+---
+
+### 🧩 Page-by-Page Functional Requirements:
+
+---
+
+#### 🔐 **1. Login & Registration Page**
+
+* Create user login and registration with validation
+* Use **JWT** or sessions to manage authentication
+* Add a tagline like: “Empowering Smart Lending Decisions – Welcome to Loanlytic”
+* Use gradient or modern backgrounds with clear, elegant forms
+
+---
+
+#### 📤 **2. Upload Utility Bills Page**
+
+* Allow users to upload **power, water, and gas bills** (PDF/image)
+* Use backend (Node.js + Express) to simulate data extraction
+* Display extracted data in a clean table with:
+
+  * Bill Type, Amount, Due Date, Payment Status
+* Store uploaded data in MongoDB (or mock local JSON)
+
+---
+
+#### 🏦 **3. Bank Selection Page**
+
+* After uploading bills, let users select from **Indian banks only**
+
+  * SBI, HDFC, ICICI, Axis, PNB, Central Bank of India, etc.
+* Use a **visual dropdown or icon-based tiles** with bank logos
+* Save selected bank to user's profile in MongoDB
+
+---
+
+#### 🖥 **4. Main Dashboard**
+
+* Sidebar should include:
+
+  * Dashboard
+  * Apply for Loan
+  * My Loans
+  * Transactions
+  * Analytics
+* Ensure each tab opens a **unique, functional React page**
+
+  * Example: "My Loans" shows loan history, "Analytics" shows usage & trends
+
+---
+
+#### 💳 **5. Credit Utilization Widget**
+
+* Show user’s utilization visually
+
+  * Total Credit: ₹75,000
+  * Used Credit: ₹40,000
+  * Utilization %: 53.33%
+* Use a circular progress bar with a hint:
+  *“Tip: Keeping utilization under 30% helps loan approval rates.”*
+
+---
+
+#### 💸 **6. Transactions Page**
+
+* Show a full table of all user transactions
+
+  * Transaction ID, Date, Amount, Type (EMI, Bill), Status
+* Include **filtering and sorting by category and date**
+* Data stored and retrieved from MongoDB
+
+---
+
+#### 👛 **7. Digital Wallet Selection**
+
+* On the final payment/disbursal page, allow users to choose:
+
+  * PhonePe, Google Pay (GPay), PayPal, BHIM UPI, Razorpay
+* Replace any non-Indian wallets (e.g., US-based options)
+* Use large clickable icons or cards for selection
+
+---
+
+#### ✅ **8. Loan Approval Status Page**
+
+* After applying, fetch ML model output (or mock it for now):
+
+  * Status: Approved / Rejected
+  * Approved %: e.g., 75%
+  * Sanctioned Amount: ₹7,50,000
+* Show a **detailed breakdown**:
+
+  * Requested Amount, Interest Rate, EMI, Tenure
+  * Credit Score, Income Stability, Liabilities
+* Action buttons:
+
+  * ✔ Accept Loan Offer
+  * 🔄 Request Re-evaluation
+  * 📄 Download PDF Report
+
+---
+
+### 🔒 Backend Expectations
+
+* Use Express.js to define RESTful APIs
+* MongoDB schema for:
+
+  * Users, Utility Bills, Banks, Transactions, Loans
+* Protect all sensitive routes with JWT auth
+* Store uploaded files in local folders or GridFS (optional)
+
+---
+
+### 📂 Suggested Project Structure
+
+```
+/client          → React frontend (React Router + Context/Redux)
+/server          → Node + Express backend
+/models          → Mongoose schemas
+/routes          → Express API endpoints
+/controllers     → API logic handlers
+/config          → DB config, middleware
+```
+
+---
+
+### 🎨 Styling Guide:
+
+* Use **TailwindCSS or custom SCSS/CSS** for styling
+* Background: Use light gradients or subtle textures
+* UI Components: Use cards, tables, modals, icons
+* Ensure full **responsiveness** (desktop & mobile)
+
+---
+
+### 🚫 No External APIs or Live Databases:
+
+* You can use mock or static data if API connection is not available
+* Don’t use external billing APIs or payment processors — simulate them instead
+
+---
+
+Please generate this application end-to-end as a full-stack **MERN app** with all features above fully working.
+
+---
+
+Let me know if you'd like this in `.txt`, with MongoDB schema templates, or component layout sketches!
