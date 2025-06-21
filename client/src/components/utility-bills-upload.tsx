@@ -137,24 +137,28 @@ export default function UtilityBillsUpload() {
             return (
               <div
                 key={billType.type}
-                className="border-2 border-dashed border-gray-300 p-6 rounded-lg text-center hover:border-primary transition-colors"
+                className="border-2 border-dashed border-gray-300 p-6 rounded-lg text-center hover:border-primary transition-colors min-h-[280px] flex flex-col justify-center"
               >
-                <Icon className={`${billType.color} text-3xl mb-4 mx-auto`} />
-                <h4 className="font-medium text-gray-900 mb-2">{billType.label}</h4>
-                <p className="text-sm text-gray-600 mb-4">
-                  Upload your {billType.label.toLowerCase()} (PDF/Image)
-                </p>
+                <div className="flex-1 flex flex-col justify-center">
+                  <Icon className={`${billType.color} text-4xl mb-4 mx-auto`} />
+                  <h4 className="font-semibold text-gray-900 mb-3 text-lg">{billType.label}</h4>
+                  <p className="text-sm text-gray-600 mb-6 px-2">
+                    Upload your {billType.label.toLowerCase()} document
+                    <br />
+                    <span className="text-xs text-gray-500">(PDF, JPEG, PNG - Max 50MB)</span>
+                  </p>
+                </div>
                 
-                <div className="relative">
+                <div className="relative mt-auto">
                   <input
                     type="file"
-                    accept=".pdf,.jpg,.jpeg,.png"
+                    accept=".pdf,.jpg,.jpeg,.png,.gif"
                     onChange={(e) => handleFileUpload(e, billType.type)}
                     disabled={isUploading}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed z-10"
                   />
                   <Button 
-                    className="btn-primary text-sm"
+                    className="btn-primary text-sm w-full py-3 relative z-0"
                     disabled={isUploading}
                   >
                     <Upload className="mr-2 h-4 w-4" />
