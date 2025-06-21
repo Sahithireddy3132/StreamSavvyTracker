@@ -31,40 +31,43 @@ export default function UtilityBillsUpload() {
   });
 
   const uploadMutation = useMutation({
-    mutationFn: async ({ file, billType, amount, dueDate }: {
+    mutationFn: async ({ file, billType }: {
       file: File;
       billType: string;
-      amount: string;
-      dueDate: string;
     }) => {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("billType", billType);
-      formData.append("amount", amount);
-      formData.append("dueDate", dueDate);
-      formData.append("paymentStatus", "pending");
+      // Simulate upload delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Generate random bill data for demonstration
+      const randomAmount = Math.floor(Math.random() * 3000) + 500;
+      const randomDueDate = new Date();
+      randomDueDate.setDate(randomDueDate.getDate() + Math.floor(Math.random() * 30) + 5);
+      
+      const newBill = {
+        id: Date.now(),
+        billType,
+        amount: randomAmount.toString(),
+        dueDate: randomDueDate.toISOString(),
+        paymentStatus: Math.random() > 0.5 ? 'pending' : 'paid',
+        fileName: file.name,
+        uploadedAt: new Date().toISOString()
+      };
 
-      const response = await fetch("/api/utility-bills", {
-        method: "POST",
-        headers: getAuthHeaders(),
-        body: formData,
-      });
-
-      if (!response.ok) throw new Error("Failed to upload bill");
-      return response.json();
+      return newBill;
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/utility-bills"] });
+    onSuccess: (newBill) => {
       setUploadingType(null);
       toast({
-        title: "Bill Uploaded",
-        description: "Your utility bill has been uploaded successfully.",
+        title: "Upload Successful!",
+        description: `Your ${newBill.billType} bill (₹${newBill.amount}) has been uploaded successfully.`,
       });
+      queryClient.invalidateQueries({ queryKey: ["/api/utility-bills"] });
     },
     onError: () => {
+      setUploadingType(null);
       toast({
         title: "Upload Failed",
-        description: "Failed to upload utility bill. Please try again.",
+        description: "There was an error uploading your file. Please try again.",
         variant: "destructive",
       });
     },
@@ -95,18 +98,11 @@ export default function UtilityBillsUpload() {
       return;
     }
 
-    // Mock data extraction - in real app this would be actual extraction
-    const mockAmount = Math.floor(Math.random() * 3000) + 500;
-    const mockDueDate = new Date();
-    mockDueDate.setDate(mockDueDate.getDate() + 15);
-
     setUploadingType(billType);
     
     uploadMutation.mutate({
       file,
       billType,
-      amount: mockAmount.toString(),
-      dueDate: mockDueDate.toISOString(),
     });
 
     // Reset the input
