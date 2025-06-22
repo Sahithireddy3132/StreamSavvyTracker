@@ -51,79 +51,68 @@ StreamSavvyTracker/
 ├── README.md # Project documentation
 └── requirements.txt # Backend dependencies
 
-🚦 Setup Instructions
+## 🚦 Setup Instructions
 
-🖥️ Frontend
+### 🖥️ Frontend
 
-Open terminal and navigate to the frontend folder:
+```bash
 cd frontend
-
-Install dependencies:
 npm install
-
-Start the development server:
 npm run dev
-
 ⚙️ Backend
 
-Navigate to the backend folder:
 cd backend
-
-Install Python dependencies:
 pip install -r requirements.txt
-
-Start the FastAPI server:
 uvicorn main:app --reload
-
-📌 Add a .env file inside the backend/ folder with the following content:
+📌 Add .env in backend/:
 
 YOUTUBE_API_KEY=your_api_key
 SPOTIFY_CLIENT_ID=your_spotify_client_id
 SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
-
 🌐 API Routes (Example)
-
-GET /youtube/stats → Get YouTube channel metrics
-GET /spotify/stats → Get Spotify artist/track data
-GET /twitch/stats → Get Twitch streamer info
+Method	Endpoint	Description
+GET	/youtube/stats	Get YouTube channel metrics
+GET	/spotify/stats	Get Spotify artist/track data
+GET	/twitch/stats	Get Twitch streamer info
 
 📊 Dashboard Pages
-
-Home → / → Overview and platform summaries
-YouTube → /youtube → YouTube stats, video views, subscribers
-Spotify → /spotify → Stream counts, follower stats, playlists
-Twitch → /twitch → Live stats, followers, average view time
+Page	URL Path	Description
+Home	/	Overview and platform summaries
+YouTube	/youtube	YouTube stats, video views, subscribers
+Spotify	/spotify	Stream counts, follower stats, playlists
+Twitch	/twitch	Live stats, followers, avg view time
 
 📦 Deployment
-
-To build the frontend for production:
+➤ Build frontend for production:
+bash
+Copy
+Edit
 npm run build
+➤ Run backend in production:
 
-To run the backend in production:
 uvicorn main:app --host 0.0.0.0 --port 8000
+📤 Deploy using:
+Frontend: Vercel, Netlify
 
-You can deploy using:
-Frontend → Vercel, Netlify
-Backend → Render, Heroku, Docker + Cloud
+Backend: Render, Heroku, Docker + Cloud
 
 📈 Future Enhancements
-
 OAuth 2.0 support for authenticated dashboards
 
 MongoDB/PostgreSQL integration for historical storage
 
-Scheduled data fetching with Celery and Redis
+Scheduled fetch with Celery and Redis
 
-Support for TikTok, LinkedIn Live, Instagram Reels
+Add support for TikTok, LinkedIn Live, Instagram Reels
 
-Notifications via Email or Slack for performance spikes
+Notification system (email/slack alerts for sudden spikes)
 
 🧪 Testing
 
-Frontend (Jest):
+# Frontend (Jest)
 npm run test
 
-Backend (pytest):
+# Backend (pytest)
 pytest
 
 🙌 Acknowledgments
@@ -133,4 +122,3 @@ FastAPI
 YouTube Data API
 Spotify Web API
 Twitch API
-
